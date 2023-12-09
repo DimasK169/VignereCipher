@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hill Cipher</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column; /* Adjusted for vertical layout */
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .input-container {
+            width: 45%;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        h3 {
+            margin-bottom: 0px;
+        }
+        h5 {
+            margin-top: 5px;
+            margin-bottom: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="title">
+        <h3>Vignere Cipher</h5>
+        <h5>Dimas Kenang Surya Ardani</h5>
+        <h5>(21120120130061)</h5>
+        <h5>Kriptografi B</h5>
+    </div>
+
+    <div class="input-container">
+        <form th:action="encrypt" th:method="post" th:object="${encrypt}">
+            <label for="plaintext">Plain Text</label>
+            <input type="text" th:field="*{plaintext}" placeholder="Input plain text">
+            <label for="key">Key</label>
+            <input type="text" th:field="*{key}" placeholder="Input your key">
+            <button type="submit">encrypt</button>
+        </form>
+        <br />
+        <label th:text="${ciphertext}"></label>
+    </div>
+
+    <div class="input-container">
+        <form th:action="decrypt" th:method="post" th:object="${decrypt}">
+            <label for="ciphertext">Cipher Text</label>
+            <input type="text" th:field="*{ciphertext}" placeholder="Input cipher text">
+            <label for="key">Key</label>
+            <input type="text" th:field="*{key}" placeholder="Input your key">
+            <button type="submit">decrypt</button>
+        </form>
+        <br />
+        <label th:text="${plaintext}"></label>
+    </div>
+</body>
+
+</html>
